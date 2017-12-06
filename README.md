@@ -1,6 +1,6 @@
 # HEXO-THEME-UTONE
 
- [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)一个在Hexo博客上开发的主题.
+ [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在Hexo博客上开发的主题.
 
 ### 介绍
 

@@ -21,6 +21,38 @@ UTONE.comment = (function () {
                 location.href="/";
             }
         });
+
+        //左侧栏隐藏
+        $('#iframe-left .iframe-left-top .hide-sidebar').on('click', function () {
+            $('#iframe-left').fadeOut();
+            $('#iframe-right').animate({width: '100%', opacity:'1'});
+            $('#iframe-right .top-col .show-sidebar').show();
+        });
+
+        //左侧栏展示
+        $('#iframe-right .top-col .show-sidebar').on('click', function () {
+            $('#iframe-left').fadeIn();
+            $('#iframe-right').animate({width: '88%'});
+            $('#iframe-right .top-col .show-sidebar').hide();
+        });
+        
+        
+        //点击左侧栏li
+        $('.iframe-left-category li').on('click', function () {
+            var _thisI = $(this).find('i:first-child');
+            if (_thisI.hasClass('fa-caret-right')) {
+                _thisI.removeClass('fa-caret-right');
+                _thisI.addClass('fa-caret-down');
+            } else {
+                _thisI.removeClass('fa-caret-down');
+                _thisI.addClass('fa-caret-right');
+            }
+
+
+        });
+
+
+        
     }
 
     /**
@@ -44,6 +76,14 @@ UTONE.comment = (function () {
         $('#iframe-right .left-col').append(_html);
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
     function _init() {
 
         //初始化事件

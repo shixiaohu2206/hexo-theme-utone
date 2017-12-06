@@ -3,8 +3,8 @@
 # ========== 资料栏 ========== #
 # 头像路径
 avatar:
-# 博主名字，不填写该字段则默认采用Hexo配置文件中的author字段
-author: 时晓虎
+# 博主名字
+author:
 # 博客签名
 signature:
 # 社交账号
@@ -30,7 +30,6 @@ friends:
 about:
   enable: true
   image:
-# ========== 资料栏 ========== #
 
 # ========== 菜单栏 ========== #
 menu:
@@ -38,8 +37,6 @@ menu:
   Archives: /archives
   About: /About
   Github: https://github.com/ahonn
-# ========== 菜单栏 ========== #
-
 
 # ========== 站点 ========== #
 # 网站的title，每篇文章后面也会加上此字段利于SEO
@@ -54,7 +51,6 @@ header_image:
 post_header_image:
 # 404页的背景图片
 _404_image:
-# ========== 站点 ========== #
 
 # ========== 评论插件 ========== #
 # 目前支持直接添加LiveRe，Disqus，Gitment和畅言，填写插件对应的字段即可启用。
@@ -72,8 +68,6 @@ comment:
   gitment_repo:
   gitment_client_id:
   gitment_client_secret:
-# ========== 评论插件 ========== #
-
 
 # ========== 统计 ========== #
 # 是否开启不蒜子统计
@@ -84,8 +78,6 @@ baidu_analytics:
 google_analytics:
 # CNZZ统计
 CNZZ_analytics:
-# ========== 统计 ========== #
-
 
 # ========== 其他 ========== #
 # favicon
@@ -97,4 +89,3 @@ toc: true
 #代码高亮css(highlight.js)
 highlight_theme: zenburn
 
-# ========== 其他 ========== #

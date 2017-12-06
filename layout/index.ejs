@@ -1,0 +1,39 @@
+<div id="main">
+
+    <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=28285910&auto=1&height=66"></iframe>-->
+
+
+    <% page.posts.each(function (_post) { %>
+    <% let truncateLength = theme.truncate_length || 300; %>
+    <% let _content = truncate(strip_html(_post.content), {length: truncateLength, omission: '...'}) %>
+    <article class="main-post">
+        <a class="" href = "<%- url_for(_post.path) %>" >
+            <h3 class="main-post-h3">
+                <% if(_post.top) { %>
+                <span class="top">置顶</span>
+                <% } %>
+                <span class="main-post-title"><%= _post.title || '[Untitled Post]' %></span>
+                <span class="main-post-date"><%- date(_post.date, "YYYY/MM/DD") %></span>
+            </h3>
+
+            <div class="main-post-content">
+                <%- _content %>
+            </div>
+        </a>
+
+
+
+
+
+    </article>
+    <div class="comment-line"></div>
+    <% }) %>
+
+
+
+</div>
+
+
+
+
+

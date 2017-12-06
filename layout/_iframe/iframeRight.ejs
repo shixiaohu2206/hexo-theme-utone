@@ -1,0 +1,18 @@
+<div id="iframe-right">
+    <div class="top-col">
+        <ul>
+            <% if (is_home()) { %>
+                <li class="top-col-href">Home<span class="top-col-x home">x</span></li>
+            <% } else { %>
+                <li class="top-col-href"><%- page.title %><span class="top-col-x">x</span></li>
+            <% } %>
+        </ul>
+    </div>
+    <div class="top-col-div"></div>
+    <div class="left-col"></div>
+    <div class="right-col">
+        <div class="right-body">
+            <%- body %>
+        </div>
+    </div>
+</div>

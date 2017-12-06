@@ -1,18 +1,14 @@
-# Landscape
+# HEXO-THEME-UTONE
 
-A brand new default theme for [Hexo].
+ [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)一个在Hexo博客上开发的主题.
 
-- [Preview](http://hexo.io/hexo-theme-landscape/)
-
-## Installation
-
-### Install
+### 安装
 
 ``` bash
-$ git clone https://github.com/hexojs/hexo-theme-landscape.git themes/landscape
+$ git@github.com:shixiaohu2206/hexo-theme-utone.git themes/utone
 ```
+修改 Hexo 的 _config.yml 中的 theme 为 utone。
 
-**Landscape requires Hexo 2.4 and above.**
 
 ### Enable
 

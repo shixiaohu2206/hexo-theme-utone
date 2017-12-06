@@ -2,6 +2,14 @@
 
  [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)一个在Hexo博客上开发的主题.
 
+### 介绍
+这是一款仿照IDE软件PhpStorm，程序员风格明显的主题，灵感与代码结构来自于[Utone](https://github.com/shixiaohu2206/hexo-theme-utone)和[Utone](https://github.com/shixiaohu2206/hexo-theme-utone)，感谢它们的开发者。
+
+###碎语
+本人第一个Hexo主题，本着熟悉NodeJS的意愿来学习写主题的。之前写过一个[WordPress主题博客](https://utone.xiaohuaiqing.com/)。在工作闲余时间完成主题的开发，首次开发，前端代码书写、结构不是很严谨，加上本人是一个PHPER，对于前端页面的不是很精通，欢迎各位指正，如果你有建议或意见，欢迎联系我。
+
+
+
 ### 安装
 
 ``` bash
@@ -14,8 +22,8 @@ $ git@github.com:shixiaohu2206/hexo-theme-utone.git themes/utone
 ### 升级
 
 ``` bash
-cd themes/landscape
-git pull
+$ cd themes/landscape
+$ git pull
 ```
 
 ## 配置

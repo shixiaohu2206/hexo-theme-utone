@@ -1,15 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <%- partial('_partial/head') %>
-    <body>
-    <%- partial('_partial/header') %>
-    <%- partial('_iframe/iframeLeft') %>
-    <%- partial('_iframe/iframeRight') %>
-    <%- partial('_partial/footer') %>
-    <%- js('js/jquery.min.js') %>
-    <%- js('js/gloabl.js') %>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <%
+        var title = page.title;
+        if (is_archive()){
+            title = __('archives');
+            if (is_month()){
+            title += ' - ' + page.year + '/' + page.month;
+            } else if (is_year()){
+            title += '-' + page.year;
+            }
+        } else if (is_category()){
+            title = __('category') + ' - ' + page.category;
+        } else if (is_tag()){
+            title = __('tags') + ' - ' + page.tag;
+        }
+    %>
+    <title>
+        <% if (title){ %>
+        <%= title %> -
+        <% } %>
+        <%= config.title %>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%- css('css/style') %>
+    <% if (theme.favicon){ %>
+    <link rel="icon" href="<%- theme.favicon %>">
+    <% } %>
+</head>
+
+<body>
+    <div id="container">
+        <div id="main-left">
+            <div class="introduce">
+                <div class="logo-worp">
+                    <img class="logo" src="<%- theme.logo %>" alt="">
+                </div>
+
+                <ul>
+                    <% for (var i in theme.menu){ %>
+                    <li>
+                        <a href="<%- url_for(theme.menu[i]) %>">
+                            <%= __(i) %>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+                <% if (page.content && !is_current('about')){ %>
+                <%- toc(page.content, {class: 'post-toc'}) %>
+                <% } %>
+            </div>
+        </div>
+        <div id="main-right">
+            <%- body %>
+        </div>
+    </div>
+    <div id="footer">
+        <%= __('powered_by') %>
+    </div>
+</body>
+
 </html>
-<script>
-    UTONE.comment.init();
-</script>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>

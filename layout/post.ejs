@@ -1,29 +1,37 @@
-<main id="post" class="article-entry">
-    <h2 class="post-title">
-        <%- page.title %>
-        <span class="main-post-date"><%- date(page.date, "YYYY/MM/DD") %></span>
-    </h2>
-    <article class="post-content">
+<div id="post">
+    <% if (page.link || page.title){ %>
+    <header class="article-header">
+        <h1>
+            <%= page.title %>
+        </h1>
+    </header>
+    <% } %>
+    <div class="post-meta">
+        <time class="post-data" datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
+            <%= date(page.date, null) %>
+        </time>
+        <% if (page.categories && page.categories.length){ %>
+        <%- list_categories(page.categories, {
+                        show_count: true,
+                        class: 'post-category',
+                        depth: '-1'
+                      }) %>
+        <% } %>
+        <% if (page.tags && page.tags.length){ %>
+        <%- list_tags(page.tags, {
+                        show_count: true,
+                        class: 'post-tag'
+                      }) %>
+        <% } %>
+    </div>
+    <% if (page.photos && page.photos.length){ %>
+    <div class="post-photos">
+        <a class="fancybox" href="<%- url_for(page.photos[0]) %>" rel="gallery_<%= page._id %>" target="_blank">
+            <img src="<%- url_for(page  .photos[0]) %>" class="animation-img" itemprop="image">
+        </a>
+    </div>
+    <% } %>
+    <div class="post-entry">
         <%- page.content %>
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-pager">
-        <% if (page.prev){ %>
-        <li class="previous">
-            <a href= "<%- url_for(page.prev.path) %>" title= <%- page.prev.title %> >
-                <span>上一篇：</span>
-                <span><%- page.prev.title || '[Untitled Post]' %></span>
-            </a>
-        </li>
-        <% } %>
-        <% if (page.next){ %>
-        <li class="next">
-            <a href= "<%- url_for(page.next.path) %>" title= <%- page.next.title %> >
-                <span>下一篇：</span>
-                <span><%- page.next.title || '[Untitled Post]' %></span>
-            </a>
-        </li>
-        <% } %>
-
-    </ul>
-</main>
+    </div>
+</div>

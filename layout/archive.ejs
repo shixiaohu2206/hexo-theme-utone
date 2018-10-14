@@ -1,10 +1,50 @@
-<section class="archive">
-    <ul class="post-archive">
-        <% page.posts.each(function (post) { %>
-        <li class="post-item">
-            <span class="post-date"><%= date(post.date, "YYYY-MM-DD") %></span>
-            <a class="post-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
-        </li>
-        <% }) %>
-    </ul>
+<%- list_categories({show_count: true, depth: '-1' }) %>
+<%- list_tags({show_count: true}) %>
+<h1 class="archive-other">
+    <% if (is_category()){ %>
+    <span class="archive-other-before">の</span>
+    <%= page.category %>
+    <% } %>
+    <% if (is_tag()){ %>
+    <span class="archive-other-before">#</span>
+    <%= page.tag %>
+    <% } %>
+</h1>
+<% var last; %>
+<% page.posts.each(function(post, i){ %>
+<% var year = post.date.year(); %>
+<% if (last != year){ %>
+<% if (last != null){ %>
+</div>
 </section>
+<% } %>
+<% last = year; %>
+<section class="archives-wrap">
+    <div class="archive-meta-wrap">
+        <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-meta">
+            <%= year %>
+        </a>
+    </div>
+    <div class="archives">
+        <% } %>
+        <article class="list">
+            <span class="list-time">
+                <%- date(post.date, "YYYY-MM-DD") %>
+            </span>
+            <span class="list-title">
+                <a href="<%- url_for(post.path) %>">
+                    <%= post.title %>
+                </a>
+            </span>
+        </article>
+        <% }) %>
+        <% if (page.posts.length){ %>
+    </div>
+</section>
+<% } %>
+<div class="list-paginator">
+    <%- paginator({
+            prev_text: __('prev'),
+            next_text: __('next')
+        }) %>
+</div>

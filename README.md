@@ -1,7 +1,7 @@
 # HEXO-THEME-UTONE
 
 > [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在 Hexo 博客上开发的主题.
-> [Demo](https://shixiaohu2206.github.io/) （也是我自己的博客）
+> [Demo](https://shixiaohu2206.github.io/index.html) （也是我自己的博客）
 
 ### 介绍
 

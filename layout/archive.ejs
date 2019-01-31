@@ -29,7 +29,9 @@
         <% } %>
         <article class="list">
             <span class="list-time">
-                <%- date(post.date, "YYYY-MM-DD") %>
+                <a href="<%- url_for(post.path) %>">
+                    <%- date(post.date, "YYYY-MM-DD") %>
+                </a>
             </span>
             <span class="list-title">
                 <a href="<%- url_for(post.path) %>">

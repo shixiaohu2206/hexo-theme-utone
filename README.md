@@ -59,3 +59,7 @@ hexo new page about
 5. RSS 订阅
 6. 赞赏功能
 7. 文章搜索功能
+
+### Actions list
+
+- 2019/1/31日，Pull requests至Hexo官方主题库

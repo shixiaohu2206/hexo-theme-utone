@@ -1,11 +1,11 @@
 # HEXO-THEME-UTONE
 
 > [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在 Hexo 博客上开发的主题.
-> [Demo](https://shixiaohu2206.github.io/index.html) （也是我自己的博客）
+> [Demo](https://shixiaohu2206.github.io/index.html) （myself blog）
 
 ### 介绍
 
-这是一款及其简单素雅的 Hexo 主题（其实是我懒）
+这是一款及其简单素雅的 Hexo 主题（懒）
 
 ### 初衷
 
@@ -38,7 +38,7 @@ favicon: /images/favicon.ico
 
 ### ABOUT 页面
 
-about 页面，没有单独写一个 layout，直接使用 markdown 文件来进行展示
+about 页面，没有单独写一个 layout，使用 markdown 文件来进行展示
 
 ```bash
 hexo new page about
@@ -46,11 +46,11 @@ hexo new page about
 
 ### 兼容性
 
-使用了 Flex 布局，SO 不支持 IE8（抵御 IE，从你我做起...）
+使用了 Flex 布局，不支持 IE8
 
 ### TODO
 
-> 花了 2 天时间写这个简单的主题，还有许多需要完善，列出以下 Todo List 来记录
+> 许多需要完善，列出以下 Todo List
 
 1. 响应式
 2. 博客文章评论

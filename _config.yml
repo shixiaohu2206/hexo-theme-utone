@@ -3,10 +3,13 @@ menu:
   home: /
   archives: /archives
   about: /about
-rss: /atom.xml
+  RSS: /atom.xml
 
 #logo
 logo: /images/logo.png
 
 # favicon
 favicon: /images/favicon.ico
+
+# rss
+rss: /atom.xml

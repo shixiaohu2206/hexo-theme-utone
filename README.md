@@ -1,7 +1,8 @@
 # HEXO-THEME-UTONE
 
 > [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在 Hexo 博客上开发的主题.
-> [Demo](https://shixiaohu2206.github.io/index.html) （myself blog）
+
+### [Demo](https://shixiaohu2206.github.io/index.html) （myself blog）
 
 ### 介绍
 
@@ -27,13 +28,16 @@ menu:
   home: /
   archives: /archives
   about: /about
-rss: /atom.xml
+  RSS: /atom.xml
 
 #logo
 logo: /images/logo.png
 
 # favicon
 favicon: /images/favicon.ico
+
+# rss
+rss: /atom.xml
 ```
 
 ### ABOUT 页面
@@ -44,22 +48,50 @@ about 页面，没有单独写一个 layout，使用 markdown 文件来进行展
 hexo new page about
 ```
 
+### 腾讯公益 404 页面
+
+在项目根目录 source 文件夹下新建 404.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator" content="Hexo 3.8.0" />
+    <meta charset="UTF-8" />
+    <title>404</title>
+  </head>
+  <body></body>
+</html>
+<script
+  type="text/javascript"
+  src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"
+  charset="utf-8"
+  homePageUrl="https://blog.utone.xyz/"
+  homePageName="回到我的主页"
+></script>
+```
+
+### 自己博客使用的插件
+
+- hexo-admin：后台管理 Hexo 博客
+- hexo-all-minifier：压缩静态文件
+- hexo-deployer-git：部署博客
+
 ### 兼容性
 
 使用了 Flex 布局，不支持 IE8
 
 ### TODO
 
-> 许多需要完善，列出以下 Todo List
-
 1. 响应式
 2. 博客文章评论
 3. 文章浏览次数统计
 4. 相片册页面
-5. RSS 订阅
+5. ~~RSS 订阅~~
 6. 赞赏功能
 7. 文章搜索功能
 
 ### Actions list
 
-- 2019/1/31日，Pull requests至Hexo官方主题库
+- 2019/1/31，Pull requests 至 Hexo 官方主题库
+- 2019/2/1，增加 RSS 订阅，压缩静态文件，增加 404 腾讯公益页面

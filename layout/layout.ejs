@@ -28,7 +28,11 @@
             <% for (var i in theme.menu){ %>
             <li><a href="<%- url_for(theme.menu[i]) %>"> <%= __(i) %> </a></li>
             <% } %>
+            <li>
+              <img id="search-img" src="/images/search.svg" alt="search" />
+            </li>
           </ul>
+
           <% if (page.content && !is_current('about')){ %> <%- toc(page.content,
           {class: 'post-toc'}) %> <% } %>
         </div>
@@ -36,45 +40,26 @@
       <div id="main-right"><%- body %></div>
     </div>
     <div id="footer"><%= __('powered_by') %></div>
+    <div id="search-pop">
+      <input type="text" id="search-input" />
+      <img id="search-close" src="/images/close-circle.svg" alt="close" />
+      <div id="search-body">
+        <ul id="search-ul"></ul>
+      </div>
+    </div>
   </body>
 </html>
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<%- js('scripts/scroll_fixed.js') %> <%- js('scripts/pace.min.js') %>
 
-<script>
+<!-- 站内搜索 -->
+<% if (theme.site_search){ %>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<%- js('scripts/site_search.js') %> <% } %>
+
+<script type="text/javascript">
   window.onload = function() {
-    _scrollFixed()
-  }
-
-  /**
-   * 滚动固定左侧栏
-   **/
-  function _scrollFixed() {
-    /**
-     * 原生offsetTop取值为相对于父元素， jquery的offset().top是取的距离屏幕顶部的距离
-     * 所以这里取父元素的offestTop
-     **/
-    var _parentDom = document.getElementById('main-left')
-    var _offectTop = _parentDom.offsetTop
-
-    var _needTopDom = document.getElementById('introduce')
-
-    window.onscroll = function() {
-      /**
-       * 获取滚动距离document的高度
-       *
-       * 声明了<!DOCTYPE html>，使用document.documentElement.scrollTop
-       * 没有声明，使用document.body.scrollTop
-       *
-       **/
-      var _scrollTop =
-        document.body.scrollTop || document.documentElement.scrollTop
-
-      // 32为距离顶部的流出的距离相当于2rem
-      if (_scrollTop > _offectTop - 32) {
-        _needTopDom.classList.add('fixed')
-      } else {
-        _needTopDom.classList.remove('fixed')
-      }
-    }
+    scroll_fixed.init()
+    siteSearch.init()
+    // searchFunc(path, 'local-search-input', 'local-search-result')
   }
 </script>

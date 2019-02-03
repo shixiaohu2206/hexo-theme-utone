@@ -14,7 +14,6 @@ html, body {
 
 a {
   color: #101010;
-  // transform: all 1s;
   text-decoration: none;
 }
 
@@ -233,6 +232,11 @@ $base-style {
     #introduce {
       width: 308px;
       transition: all 0.2s;
+
+      #search-img {
+        width: 1.3rem;
+        cursor: pointer;
+      }
 
       ul, .logo-worp {
         text-align: center;
@@ -541,3 +545,4 @@ $base-style {
 
 @import 'highlight';
 @import 'pace';
+@import 'site_search.styl';

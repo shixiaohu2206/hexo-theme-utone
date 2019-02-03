@@ -1,4 +1,4 @@
-# 菜单导航
+#菜单导航
 menu:
   home: /
   archives: /archives
@@ -11,5 +11,11 @@ logo: /images/logo.png
 # favicon
 favicon: /images/favicon.ico
 
+# site switch
+site_search: true
+
 # rss
 rss: /atom.xml
+
+# search post url
+search_url: /search.xml

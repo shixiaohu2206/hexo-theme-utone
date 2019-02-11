@@ -120,7 +120,7 @@ jsonContent:
 - 2019/1/31，Pull requests 至 Hexo 官方主题库
 - 2019/2/1，增加 RSS 订阅，压缩静态文件，增加 404 腾讯公益页面
 - 2019/2/11，增加站内搜索功能
-- 2019/2/11，年后第一天上班，发现主题以被 Hexo 官方主题库收录（[Link](https://hexo.io/themes/)）
+- 2019/2/11，年后第一天上班，发现主题已被 Hexo 官方主题库收录（[Link](https://hexo.io/themes/)）
 
 ### TODO
 

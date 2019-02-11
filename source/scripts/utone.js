@@ -921,6 +921,9 @@ var siteSearch = (function() {
     _containerDom.classList.remove('filter')
     // 页面允许滚动
     _htmlDom.classList.remove('overflow_hidden')
+    // 清除本次搜索记录
+    _searchUlDom.innerHTML = ''
+    _searchInputDom.value = ''
   }
 
   // 阻止冒泡
@@ -1006,39 +1009,43 @@ var siteSearch = (function() {
   // 监听input change事件，并发送POST请求，获取结果
   function inputChange() {
     _searchInputDom.addEventListener('input', function(e) {
-      // 尝试获取数据
-      tryPost().then(posts => {
-        if (posts.length) {
-          let result,
-            _key = e.target.value
-          result = posts.filter(post => {
-            return matcher(post, _key)
-          })
+      let _key = e.target.value
+      if (_key) {
+        // 尝试获取数据
+        tryPost().then(posts => {
+          if (posts.length) {
+            let result
+            result = posts.filter(post => {
+              return matcher(post, _key)
+            })
 
-          if (result.length) {
-            let _li = ''
-            for (let i = 0; i < result.length; i++) {
-              let _tag = ''
-              if (result[i].tags.length) {
-                for (let j = 0; j < result[i].tags.length; j++) {
-                  _tag += `<a href="${result[i].tags[j].permalink}">#${
-                    result[i].tags[j].name
-                  }</> &nbsp&nbsp`
+            if (result.length) {
+              let _li = ''
+              for (let i = 0; i < result.length; i++) {
+                let _tag = ''
+                if (result[i].tags.length) {
+                  for (let j = 0; j < result[i].tags.length; j++) {
+                    _tag += `<a href="${result[i].tags[j].permalink}">#${
+                      result[i].tags[j].name
+                    }</> &nbsp&nbsp`
+                  }
                 }
-              }
 
-              _li += _temp
-                .replace('{HREF}', result[i].permalink)
-                .replace('{TITLE}', result[i].title)
-                .replace('{TAG}', _tag)
-                .replace('{DATE}', result[i].date)
+                _li += _temp
+                  .replace('{HREF}', result[i].permalink)
+                  .replace('{TITLE}', result[i].title)
+                  .replace('{TAG}', _tag)
+                  .replace('{DATE}', result[i].date)
+              }
+              _searchUlDom.innerHTML = _li
+            } else {
+              _searchUlDom.innerHTML = `<li><a href="#">无结果</a></li>`
             }
-            _searchUlDom.innerHTML = _li
-          } else {
-            _searchUlDom.innerHTML = `<li><a href="#">无结果</a></li>`
           }
-        }
-      })
+        })
+      } else {
+        _searchUlDom.innerHTML = ''
+      }
     })
   }
 

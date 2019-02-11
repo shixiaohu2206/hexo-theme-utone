@@ -2,7 +2,7 @@
 
 > [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在 Hexo 博客上开发的主题.
 
-### [Demo](https://shixiaohu2206.github.io/index.html) （myself blog）
+### [Demo](https://shixiaohu2206.github.io/index.html) （Myself Blog）
 
 ### 介绍
 
@@ -50,7 +50,7 @@ hexo new page about
 
 ### 腾讯公益 404 页面
 
-在项目根目录 source 文件夹下新建 404.html
+在项目根目录 source 文件夹下新建 404.html，`homePageUrl` 改为站点链接
 
 ```html
 <!DOCTYPE html>
@@ -71,15 +71,56 @@ hexo new page about
 ></script>
 ```
 
-### 自己博客使用的插件
+### 站内搜索
+
+在`_config.yml`文件中添加以下配置，并安装插件 hexo-generator-json-content
+
+```yml
+# 修改url
+url: https://blog.utone.xyz/
+
+# 开启站内搜索
+site_search: true
+
+# 站内搜索生成文件配置 https://github.com/alexbruno/hexo-generator-json-content
+jsonContent:
+  meta: false
+  pages: false
+  dateFormat: 'Y-m-d H:i'
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: true
+    excerpt: false
+    categories: false
+    tags: true
+```
+
+### 博客使用的插件
 
 - hexo-admin：后台管理 Hexo 博客
 - hexo-all-minifier：压缩静态文件
 - hexo-deployer-git：部署博客
+- hexo-generator-json-content：生成站内搜索文件
 
 ### 兼容性
 
 使用了 Flex 布局，不支持 IE8
+
+### Actions list
+
+- 2019/1/31，Pull requests 至 Hexo 官方主题库
+- 2019/2/1，增加 RSS 订阅，压缩静态文件，增加 404 腾讯公益页面
+- 2019/2/11，增加站内搜索功能
+- 2019/2/11，年后第一天上班，发现主题以被 Hexo 官方主题库收录（[Link](https://hexo.io/themes/)）
 
 ### TODO
 
@@ -89,9 +130,4 @@ hexo new page about
 4. 相片册页面
 5. ~~RSS 订阅~~
 6. 赞赏功能
-7. 文章搜索功能
-
-### Actions list
-
-- 2019/1/31，Pull requests 至 Hexo 官方主题库
-- 2019/2/1，增加 RSS 订阅，压缩静态文件，增加 404 腾讯公益页面
+7. ~~站内搜索功能~~

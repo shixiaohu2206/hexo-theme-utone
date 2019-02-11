@@ -2,64 +2,73 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <% var title = page.title; if (is_archive()){ title = __('archives'); if
-    (is_month()){ title += ' - ' + page.year + '/' + page.month; } else if
-    (is_year()){ title += '-' + page.year; } } else if (is_category()){ title =
-    __('category') + ' - ' + page.category; } else if (is_tag()){ title =
-    __('tags') + ' - ' + page.tag; } %>
-    <title><% if (title){ %> <%= title %> - <% } %> <%= config.title %></title>
+    <% 
+      let title = page.title; 
+      if (is_archive()) {
+        title = __('archives') 
+      };
+      if (is_month()) {
+        title += ' - ' + page.year + '/' + page.month; 
+      } else if (is_year()) {
+        title += '-' + page.year; 
+      } else if (is_category()) {
+        title = __('category') + ' - ' + page.category; 
+      } else if (is_tag()) {
+        title = __('tags') + ' - ' + page.tag; 
+      } 
+    %>
+    <title>
+      <% if (title) { %> <%= title %> - <% } %> <%= config.title %>
+    </title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-    <%- css('css/style') %> <% if (theme.favicon){ %>
-    <link rel="icon" href="<%- theme.favicon %>" />
+    <%- css('css/style') %> 
+    <% if (theme.favicon) { %>
+      <link rel="icon" href="<%- theme.favicon %>" />
     <% } %>
   </head>
-
   <body>
     <div id="container">
       <div id="main-left">
         <div id="introduce">
           <div class="logo-worp">
-            <img class="logo" src="<%- theme.logo %>" alt="" />
+            <a href="/"><img class="logo" src="<%- theme.logo %>" alt=""/></a>
           </div>
           <ul>
-            <% for (var i in theme.menu){ %>
-            <li><a href="<%- url_for(theme.menu[i]) %>"> <%= __(i) %> </a></li>
+            <% for (let i in theme.menu) { %>
+              <li><a href="<%- url_for(theme.menu[i]) %>"> <%= __(i) %> </a></li>
             <% } %>
             <li>
               <img id="search-img" src="/images/search.svg" alt="search" />
             </li>
           </ul>
-
-          <% if (page.content && !is_current('about')){ %> <%- toc(page.content,
-          {class: 'post-toc'}) %> <% } %>
+          <% if (page.content && !is_current('about')) { %> 
+            <%- toc(page.content, {class: 'post-toc'}) %> 
+          <% } %>
         </div>
       </div>
       <div id="main-right"><%- body %></div>
     </div>
     <div id="footer"><%= __('powered_by') %></div>
-    <div id="search-pop">
-      <input type="text" id="search-input" />
-      <img id="search-close" src="/images/close-circle.svg" alt="close" />
-      <div id="search-body">
-        <ul id="search-ul"></ul>
+    <% if (config.site_search) { %>
+      <div id="search-pop">
+        <input type="text" id="search-input" placeholder="请输入关键词" />
+        <img id="search-close" src="/images/close-circle.svg" alt="close" />
+        <div id="search-body">
+          <ul id="search-ul"></ul>
+        </div>
       </div>
-    </div>
+    <% } %>
   </body>
 </html>
-<%- js('scripts/scroll_fixed.js') %> <%- js('scripts/pace.min.js') %>
-
-<!-- 站内搜索 -->
-<% if (theme.site_search){ %>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<%- js('scripts/site_search.js') %> <% } %>
+<!-- 加载主题脚本文件 -->
+<%- js('scripts/utone.js') %>
 
 <script type="text/javascript">
   window.onload = function() {
     scroll_fixed.init()
     siteSearch.init()
-    // searchFunc(path, 'local-search-input', 'local-search-result')
   }
 </script>

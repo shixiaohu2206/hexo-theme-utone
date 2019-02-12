@@ -2,11 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="baidu-site-verification" content="vvVgSQUzPU" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="keywords" content="虎虎|博客|个人|utone|Utone|">
+    <meta name="description" content="骑士恨煎蛋，骑士恨孜然">
     <% 
       let title = page.title; 
       if (is_archive()) {
         title = __('archives') 
-      };
+      }
       if (is_month()) {
         title += ' - ' + page.year + '/' + page.month; 
       } else if (is_year()) {
@@ -15,15 +22,11 @@
         title = __('category') + ' - ' + page.category; 
       } else if (is_tag()) {
         title = __('tags') + ' - ' + page.tag; 
-      } 
+      }
     %>
     <title>
       <% if (title) { %> <%= title %> - <% } %> <%= config.title %>
     </title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
     <%- css('css/style') %> 
     <% if (theme.favicon) { %>
       <link rel="icon" href="<%- theme.favicon %>" />
@@ -52,7 +55,9 @@
       <div id="main-right"><%- body %></div>
     </div>
     <div id="footer"><%= __('powered_by') %></div>
+    <img id="top" src="/images/up-circle.svg" alt="top" />
     <% if (config.site_search) { %>
+      <div id="search-mask"></div>
       <div id="search-pop">
         <input type="text" id="search-input" placeholder="请输入关键词" />
         <img id="search-close" src="/images/close-circle.svg" alt="close" />
@@ -68,7 +73,7 @@
 
 <script type="text/javascript">
   window.onload = function() {
-    scroll_fixed.init()
+    scroll.init()
     siteSearch.init()
   }
 </script>

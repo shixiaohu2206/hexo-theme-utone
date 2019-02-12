@@ -4,22 +4,54 @@
 
 .overflow_hidden {
     overflow-y: hidden !important;
+    padding-right: 0.8rem; // 滚动条的宽度，避免页面抖动
+}
+
+.fadein {
+    animation: fadein 0.4s ease-in;
+    -webkit-animation: fadein 0.4s ease-in; /* Safari 和 Chrome */
+    display: block !important;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#search-mask {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+    display: none;
 }
 
 #search-pop {
-    width: 35rem;
+    width: 36rem;
     height: 40rem;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: -18rem;
+    margin-top: -20rem;
     background-color: #2E3846;
     text-align: center;
     z-index: 9999;
-    display: none;
     padding: 1rem;
     border-radius: 0.4rem;
     overflow: auto;
+    transition: all 0.2s;
+    filter: blur(0);
+    display: none;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 
     #search-close {
@@ -60,7 +92,7 @@
                 padding: 0.4rem 0.6rem;
                 list-style: none;
                 text-align: left;
-                border-radius: 0.4rem;
+                border-radius: 0.2rem;
                 border-bottom: 1px solid #eaecef;
                 transition: all 0.3s;
 
@@ -79,7 +111,7 @@
             }
 
             li:hover {
-                transform: scale(1.03);
+                transform: scale(1.02);
                 background-color: #eaecef;
             }
         }

@@ -852,43 +852,57 @@
       : D.startOnPageLoad && j.start()
 }.call(this))
 
-var scroll_fixed = (function() {
-  {
+let scroll = (function() {
+  /**
+   * 滚动固定左侧栏
+   **/
+  function _scrollFixed() {
     /**
-     * 滚动固定左侧栏
+     * 原生offsetTop取值为相对于父元素， jquery的offset().top是取的距离屏幕顶部的距离
+     * 所以这里取父元素的offestTop
      **/
-    function _scrollFixed() {
+    let _parentDom = document.getElementById('main-left')
+    let _offectTop = _parentDom.offsetTop
+    let _needTopDom = document.getElementById('introduce')
+    let _topDom = document.getElementById('top')
+
+    window.onscroll = function() {
       /**
-       * 原生offsetTop取值为相对于父元素， jquery的offset().top是取的距离屏幕顶部的距离
-       * 所以这里取父元素的offestTop
+       * 获取滚动距离document的高度
+       *
+       * 声明了<!DOCTYPE html>，使用document.documentElement.scrollTop
+       * 没有声明，使用document.body.scrollTop
+       *
        **/
-      let _parentDom = document.getElementById('main-left')
-      let _offectTop = _parentDom.offsetTop
+      let _scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop
 
-      let _needTopDom = document.getElementById('introduce')
-
-      window.onscroll = function() {
-        /**
-         * 获取滚动距离document的高度
-         *
-         * 声明了<!DOCTYPE html>，使用document.documentElement.scrollTop
-         * 没有声明，使用document.body.scrollTop
-         *
-         **/
-        let _scrollTop =
-          document.body.scrollTop || document.documentElement.scrollTop
-
-        // 32为距离顶部的流出的距离相当于2rem
-        if (_scrollTop > _offectTop - 32) {
-          _needTopDom.classList.add('fixed')
-        } else {
-          _needTopDom.classList.remove('fixed')
-        }
+      // 32为距离顶部的流出的距离相当于2rem
+      if (_scrollTop > _offectTop - 32) {
+        _needTopDom.classList.add('fixed')
+        _topDom.style.bottom = '2rem'
+      } else {
+        _needTopDom.classList.remove('fixed')
+        _topDom.style.bottom = ''
       }
     }
   }
+
+  /**
+   * 返回顶部
+   **/
+  function _scrollToTop() {
+    let _topDom = document.getElementById('top')
+    let _containerDom = document.getElementById('container')
+
+    _topDom.addEventListener('click', function() {
+      _containerDom.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }
+
   function init() {
     _scrollFixed()
+    _scrollToTop()
   }
 
   return { init: init }
@@ -897,11 +911,12 @@ var scroll_fixed = (function() {
 /**
  * 搜索弹出框
  */
-var siteSearch = (function() {
+let siteSearch = (function() {
   let _blogData = {} // 远端拉取的博客数据
   let _htmlDom = document.querySelector('html')
   let _imgDom = document.getElementById('search-img')
   let _containerDom = document.getElementById('container')
+  let _searchMaskDom = document.getElementById('search-mask')
   let _searchPopDom = document.getElementById('search-pop')
   let _searchInputDom = document.getElementById('search-input')
   let _searchCloseDom = document.getElementById('search-close')
@@ -909,14 +924,19 @@ var siteSearch = (function() {
   let _searchUlDom = _searchBodyDom.querySelector('ul')
 
   function showPop() {
-    _searchPopDom.style.display = 'block'
+    // 展示
+    _searchPopDom.classList.add('fadein')
+    // _searchPopDom.style.display = 'block'
+    _searchMaskDom.style.display = 'block'
     // 背景虚化
     _containerDom.classList.add('filter')
     // 页面禁止滚动
     _htmlDom.classList.add('overflow_hidden')
   }
   function hidePop() {
-    _searchPopDom.style.display = 'none'
+    // 隐藏
+    _searchPopDom.classList.remove('fadein')
+    _searchMaskDom.style.display = 'none'
     // 清楚背景虚化
     _containerDom.classList.remove('filter')
     // 页面允许滚动

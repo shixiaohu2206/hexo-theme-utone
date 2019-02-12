@@ -6,7 +6,6 @@ line-height = 1.8rem;
 
 html, body {
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
@@ -223,8 +222,8 @@ $base-style {
   overflow: hidden;
   min-height: 100%;
   display: flex;
-  display: -webkit-flex;
   justify-content: center;
+  transition: all 0.2s;
 
   #main-left {
     width: 308px;
@@ -232,7 +231,6 @@ $base-style {
 
     #introduce {
       width: 308px;
-      transition: all 0.2s;
 
       #search-img {
         width: 1.3rem;
@@ -493,6 +491,19 @@ $base-style {
   color: #999;
   margin: 2rem 0;
   text-align: center;
+}
+
+#top {
+  width: 3rem;
+  cursor: pointer;
+  position: fixed;
+  bottom: -7rem;
+  right: 2rem;
+  transition: all 0.3s;
+}
+
+#top:hover {
+  transform: scale(1.3);
 }
 
 .post-entry {

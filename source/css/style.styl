@@ -314,13 +314,13 @@ $base-style {
 
     .list {
       margin: 2rem 0;
-      transition: all 0.3s;
       display: flex;
       flex-direction: row;
+      transition: all 0.3s ease;
 
       a:hover {
         color: #999;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
 
       .list-time {
@@ -335,11 +335,12 @@ $base-style {
 
       .list-title {
         width: 85%;
+        transition: all 0.3s ease;
       }
     }
 
     .list:hover {
-      transform: translateX(0.1rem);
+      transform: translateX(0.3rem);
     }
 
     .list-paginator {
@@ -351,7 +352,7 @@ $base-style {
         border: 1px solid #333;
         background-color: #333;
         transition: all 0.5s;
-        border-radius: 0.1rem;
+        border-radius: 0.2rem;
         margin: 0 0.3rem;
       }
 

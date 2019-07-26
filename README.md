@@ -2,11 +2,14 @@
 
 > [Utone](https://github.com/shixiaohu2206/hexo-theme-utone)是一个在 Hexo 博客上开发的主题.
 
-### [Demo](https://shixiaohu2206.github.io/index.html) （Myself Blog）
+### TIPS
+
+该主题以后不会再更新了，有新的需求可以 fork，自己添加。
+本人重新写了一个[Utone](https://github.com/shixiaohu2206/hexo-theme-huhu)，会持续更新，后面也会增加到hexo主题库中~
 
 ### 介绍
 
-这是一款及其简单素雅的 Hexo 主题（懒）
+这是一款及其简单素雅的 Hexo 主题
 
 ### 初衷
 
@@ -124,8 +127,8 @@ jsonContent:
 
 ### 畅言评论
 
-> 这两天才发现原来有网友提issues...
-> 怪我粗心没看见，issues希望添加评论，目前我只有畅言，所以抽空添加了一下，配置如下
+> 这两天才发现原来有网友提 issues...
+> 怪我粗心没看见，issues 希望添加评论，目前我只有畅言，所以抽空添加了一下，配置如下
 
 ```js
 #畅言评论,需要去畅言注册，获取appid和conf，填写到下方即可
@@ -133,7 +136,6 @@ changyan:
   appid: ''
   conf: ''
 ```
-
 
 ### TODO
 

@@ -19,3 +19,8 @@ rss: /atom.xml
 
 # search post url
 search_url: /search.xml
+
+#畅言评论
+changyan:
+  appid: ''
+  conf: ''
